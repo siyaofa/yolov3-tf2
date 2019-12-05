@@ -1,3 +1,8 @@
+
+python train.py --batch_size 8 --epochs 10 --dataset val_csv.tfrecords --val_dataset val_csv.tfrecords --mode eager_fit --transfer none
+
+python detect.py --image ./data/cube.png
+
 # YoloV3 Implemented in TensorFlow 2.0
 
 This repo provides a clean implementation of YoloV3 in TensorFlow 2.0 using all the best practices.

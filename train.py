@@ -177,6 +177,7 @@ def main(_argv):
                             epochs=FLAGS.epochs,
                             callbacks=callbacks,
                             validation_data=val_dataset)
+        model.save_weights('./checkpoints/yolov3.tf')
 
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 
-python train.py --batch_size 8 --epochs 10 --dataset val_csv.tfrecords --val_dataset val_csv.tfrecords --mode eager_fit --transfer none
+python train.py --batch_size 8 --epochs 10 --dataset ./data/train.tfrecords --val_dataset ./data/val.tfrecords --mode eager_fit --transfer none
 
 python detect.py --image ./data/cube.png
 

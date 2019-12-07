@@ -27,8 +27,8 @@ def create_tf_example(filename,encoded,features, label):
     return tf_example
 
 
-image_path=r'D:\TEMP\cube_classify\raw_from_user\vott\vott-csv-export'
-csv_filename=r'cube4points-export.csv'
+image_path=r'D:\temp\vott\vott-csv-export'
+csv_filename=r'cube-export.csv'
 csv = pd.read_csv(os.path.join(image_path,csv_filename)).values
 
 train_writer=tf.io.TFRecordWriter("./data/train.tfrecords")
@@ -40,9 +40,9 @@ for row in csv:
     if(line_num>1):
         image, features, label = row[0],row[1:-1], row[-1]
         example = create_tf_example(filename=os.path.join(image_path,image),encoded='PNG',features=features, label=label)
-        if(line_num<=100) :
+        if(line_num<=135) :
             train_writer.write(example.SerializeToString())
-        elif(line_num<150):
+        elif(line_num<165):
             val_writer.write(example.SerializeToString())
         else:
             break

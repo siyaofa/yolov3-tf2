@@ -1,7 +1,9 @@
 
-python train.py --batch_size 2 --epochs 100 --dataset ./data/train.tfrecords --val_dataset ./data/val.tfrecords --transfer none
+python train.py --batch_size 2 --epochs 100 --num_classes 1 --dataset ./data/train.tfrecords --val_dataset ./data/val.tfrecords --transfer none
 
 python detect.py --image ./data/cube.png
+
+python detect.py --image "D:\temp\vott\vott-csv-export\IMG_20191207_161413.jpg"
 
 # YoloV3 Implemented in TensorFlow 2.0
 

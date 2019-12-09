@@ -12,11 +12,12 @@ def create_tf_example(filename,encoded,features, label):
     ymins = [features[1] / height]
     xmaxs = [features[2] / width]
     ymaxs = [features[3] / height]
+    image=open(filename,'rb').read()
     tf_example = tf.train.Example(features=tf.train.Features(feature={
         'image/width':tf.train.Feature(int64_list=tf.train.Int64List(value=[width])),
         'image/height':tf.train.Feature(int64_list=tf.train.Int64List(value=[height])),
         'image/filename':tf.train.Feature(bytes_list=tf.train.BytesList(value=[filename.encode('utf-8')])),
-        'image/encoded':tf.train.Feature(bytes_list=tf.train.BytesList(value=[filename.encode('utf-8')])),
+        'image/encoded':tf.train.Feature(bytes_list=tf.train.BytesList(value=[image])),
         'image/object/bbox/xmin':tf.train.Feature(float_list=tf.train.FloatList(value=xmins)),
         'image/object/bbox/ymin':tf.train.Feature(float_list=tf.train.FloatList(value=ymins)),
         'image/object/bbox/xmax':tf.train.Feature(float_list=tf.train.FloatList(value=xmaxs)),
@@ -27,7 +28,7 @@ def create_tf_example(filename,encoded,features, label):
     return tf_example
 
 
-image_path=r'D:\temp\vott\vott-csv-export'
+image_path=r'D:\TEMP\cube_classify\vott-csv-export'
 csv_filename=r'cube-export.csv'
 csv = pd.read_csv(os.path.join(image_path,csv_filename)).values
 

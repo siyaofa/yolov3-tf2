@@ -4,7 +4,7 @@ import os
 import cv2 as cv
 import random
 
-def create_tf_example(filename,encoded,features, label):
+def create_tf_example(filename,features, label):
     img=cv.imread(filename)
     height=img.shape[0]
     width=img.shape[1]
@@ -28,7 +28,7 @@ def create_tf_example(filename,encoded,features, label):
     return tf_example
 
 
-image_path=r'D:\TEMP\cube_classify\vott-csv-export'
+image_path=r'./data/vott-csv-export'
 csv_filename=r'cube-export.csv'
 csv = pd.read_csv(os.path.join(image_path,csv_filename)).values
 
@@ -40,7 +40,7 @@ for row in csv:
     line_num+=1
     if(line_num>1) and len(row)>0:
         image, features, label = row[0],row[1:-1], row[-1]
-        example = create_tf_example(filename=os.path.join(image_path,image),encoded='PNG',features=features, label=label)
+        example = create_tf_example(filename=os.path.join(image_path,image),features=features, label=label)
         is_train=False
 
         if(random.random()>0.2):

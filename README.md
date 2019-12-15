@@ -1,5 +1,5 @@
 
-python train.py --batch_size 2 --epochs 100 --num_classes 1 --dataset ./data/train.tfrecords --val_dataset ./data/val.tfrecords --transfer none
+python train.py --batch_size 16 --epochs 100 --num_classes 80 --dataset ./data/train.tfrecords --val_dataset ./data/val.tfrecords --transfer fine_tune
 
 python detect.py --image ./data/cube.png
 

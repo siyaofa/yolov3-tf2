@@ -69,7 +69,7 @@ def main(_argv):
     yolo=load_yolo()
 
     inputs_path=r'./data/test_same_background'
-    outputs_path=r'./data/test_same_background_outputs'
+    outputs_path=r'./data/outputs'
 
     filelist=os.listdir(inputs_path)
 

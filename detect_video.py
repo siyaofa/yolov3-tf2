@@ -61,7 +61,8 @@ def main(_argv):
         if img is None:
             logging.warning("Empty Frame")
             time.sleep(0.1)
-            continue
+            break
+            # continue
 
         img_in = tf.expand_dims(img, 0)
         img_in = transform_images(img_in, FLAGS.size)

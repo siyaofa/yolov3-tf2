@@ -68,8 +68,10 @@ def main(_argv):
     
     yolo=load_yolo()
 
-    inputs_path=r'./data/test_same_background'
-    outputs_path=r'./data/outputs'
+    inputs_path=r'./data/test'
+    outputs_path=inputs_path+'_outputs'
+
+    os.makedirs(outputs_path)
 
     filelist=os.listdir(inputs_path)
 

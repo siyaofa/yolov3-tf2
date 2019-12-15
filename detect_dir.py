@@ -16,7 +16,7 @@ flags.DEFINE_string('weights', './checkpoints/yolov3.tf',
                     'path to weights file')
 flags.DEFINE_boolean('tiny', False, 'yolov3 or yolov3-tiny')
 flags.DEFINE_integer('size', 416, 'resize images to')
-flags.DEFINE_string('image', './data/girl.png', 'path to input image')
+flags.DEFINE_string('input', './data/test', 'path to input image')
 flags.DEFINE_string('output', './output.jpg', 'path to output image')
 flags.DEFINE_integer('num_classes', 80, 'number of classes in the model')
 
@@ -58,7 +58,12 @@ def test(yolo,file,inputs,outputs):
                                            np.array(boxes[0][i])))
 
     img = cv2.imread(input_file)
-    img = cv2.resize(img,None,fx=0.1,fy=0.1)
+    w,h=img.shape[0],img.shape[1]
+    size=w
+    if h<w:
+        size=h
+    scale=480/size
+    img = cv2.resize(img,None,fx=scale,fy=scale)
     img = draw_outputs(img, (boxes, scores, classes, nums), class_names)
     cv2.imwrite(output_file, img)
     logging.info('output saved to: {}'.format(output_file))
@@ -68,10 +73,10 @@ def main(_argv):
     
     yolo=load_yolo()
 
-    inputs_path=r'./data/test'
+    inputs_path=FLAGS.input#r'./data/test'
     outputs_path=inputs_path+'_outputs'
-
-    os.makedirs(outputs_path)
+    if not os.path.exists(outputs_path):
+        os.makedirs(outputs_path)
 
     filelist=os.listdir(inputs_path)
 

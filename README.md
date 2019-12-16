@@ -7,6 +7,8 @@ python detect.py --image ./data/cube.png
 
 python detect.py --image "D:\temp\vott\vott-csv-export\IMG_20191207_161413.jpg"
 
+python detect_video.py --video ./data/VID_20191215_184813.mp4 --weights ./checkpoints/yolov3_train_14.tf --tiny
+
 # YoloV3 Implemented in TensorFlow 2.0
 
 This repo provides a clean implementation of YoloV3 in TensorFlow 2.0 using all the best practices.

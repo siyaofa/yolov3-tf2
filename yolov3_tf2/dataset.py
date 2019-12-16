@@ -80,7 +80,7 @@ def transform_images(x_train, size):
 IMAGE_FEATURE_MAP = {
     'image/width': tf.io.FixedLenFeature([], tf.int64),
     'image/height': tf.io.FixedLenFeature([], tf.int64),
-    'image/filename': tf.io.FixedLenFeature([], tf.string),
+    #'image/filename': tf.io.FixedLenFeature([], tf.string),
     'image/encoded': tf.io.FixedLenFeature([], tf.string),
     'image/object/bbox/xmin': tf.io.VarLenFeature(tf.float32),
     'image/object/bbox/ymin': tf.io.VarLenFeature(tf.float32),

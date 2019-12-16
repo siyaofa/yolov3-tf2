@@ -1,5 +1,7 @@
 
-python train.py --batch_size 16 --epochs 100 --num_classes 80 --dataset ./data/train.tfrecords --val_dataset ./data/val.tfrecords --transfer fine_tune
+python train.py --batch_size 8 --epochs 100  --dataset ./data/train.tfrecords --val_dataset ./data/val.tfrecords --transfer fine_tune 
+
+python train.py --batch_size 8 --epochs 100  --dataset ./data/train.tfrecords --val_dataset ./data/val.tfrecords --transfer fine_tune --tiny  --weights ./checkpoints/yolov3-tiny.tf
 
 python detect.py --image ./data/cube.png
 
